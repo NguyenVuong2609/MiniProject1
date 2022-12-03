@@ -29,7 +29,9 @@ function check(){
           console.log(keyPass);
           keyID = true;
           console.log(keyID);
-          alert('Đăng nhập thành công.')
+          document.getElementById('signIn').onsubmit = function(e){
+            e.preventDefault();
+          }
           window.location = './index.html';
       } else {
         document.getElementById('result').innerHTML = 'Sai tài khoản hoặc mật khẩu.'
