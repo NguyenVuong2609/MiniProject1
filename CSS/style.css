@@ -216,7 +216,10 @@ i {
 .love {
     color: white;
 }
-
+.love:hover {
+    cursor: pointer;
+    color: brown;
+}
 
 /* Phần cuối  */
 .footer {
