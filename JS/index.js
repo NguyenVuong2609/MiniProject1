@@ -48,11 +48,6 @@ let closeCart = document.getElementById("close-cart");
 let result = document.getElementById("cart-menu");
 cartBtn.addEventListener("click", function () {
   console.log(result.style.visibility);
-  // if ( result.style.visibility == "hidden") {
-  //   result.style.visibility = "visible";
-  // } else {
-  //   result.style.visibility = "hidden";
-  // }
   result.style.visibility = (result.style.visibility == "hidden" ) ? "visible" : "hidden";
 });
 

@@ -35,6 +35,7 @@ body {
 .header {
     display: flex;
     align-items: center;
+    font-size: 22px;
 }
 .menu {
    text-align: center;
