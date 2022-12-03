@@ -204,12 +204,16 @@ i {
 .bodyContent {
     display: flex;
 }
-.product i{
-    color: #ff8380;
-}
 .add-cart:hover{
     cursor: pointer;
     color: brown;
+}
+.add-cart {
+    margin-right: 10px;
+    color: #ff8380;
+}
+.love {
+    color: white;
 }
 
 

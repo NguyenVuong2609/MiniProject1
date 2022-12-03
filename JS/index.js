@@ -81,3 +81,14 @@ closeCart.addEventListener("click", function () {
   console.log(list);
   list.innerHTML = "";
 });
+
+// Nút yêu thích sản phẩm
+const love = document.querySelectorAll('.love');
+console.log(love.length);
+for (i = 0; i < love.length; i++) {
+  love[i].addEventListener("click", function () {
+    console.log("abc");
+    console.log(this.style.color);
+    this.style.color = (this.style.color == "white" ) ? "#ff8380" : "white";
+  })
+}
