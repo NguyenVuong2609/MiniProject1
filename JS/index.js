@@ -1,5 +1,8 @@
 // Slide
 let slideIndex = 0;
+var MemberStatus = localStorage.getItem('isLogin');
+let isLogin = JSON.parse(MemberStatus);
+let loginBtn = document.getElementById('login-button');
 showSlides();
 
 function showSlides() {
@@ -68,7 +71,7 @@ function showProduct(){
   img.src = y[y.length-1].img;
   img.width = 100;
   div.appendChild(span);
-  span.innerHTML = y[y.length-1].name + ' ' + y[y.length-1].price;
+  span.innerHTML = y[y.length-1].name + ' ' + y[y.length-1].price + '$';
   total.innerHTML = "Tổng sản phẩm trong giỏ hàng là: " + y.length;
   small.innerHTML = y.length;
   alert("Thêm sản phẩm vào rỏ hàng thành công.")
@@ -87,17 +90,52 @@ closeCart.addEventListener("click", function () {
 
 // Nút yêu thích sản phẩm
 const love = document.querySelectorAll('.love');
-console.log(love.length);
 for (i = 0; i < love.length; i++) {
   love[i].addEventListener("click", function () {
-    console.log("abc");
-    console.log(this.style.color);
-    this.style.color = (this.style.color == "white" ) ? "#ff8380" : "white";
-  })
-}
+    for (i = 0; i <isLogin.length ; i++){
+      if (isLogin[i].status) {
+        this.style.color = (this.style.color == "white" ) ? "#ff8380" : "white";
+      } else {
+        alert('Vui lòng đăng nhập để yêu thích sản phẩm.')
+      }
+    }
+  })}
+    
+
 
 // Nút đăng nhập từ Trang Chủ 
-let loginBtn = document.getElementById('login-button');
+
 loginBtn.addEventListener('click', function(){
-  window.location = "./login.html";
+  for (i = 0; i <isLogin.length ; i++) {
+    if (isLogin[i].status) {
+      isLogin[i].status = false;
+      localStorage.setItem("isLogin", JSON.stringify(isLogin));
+      loginBtn.value = "Log in";
+    } else {
+      for ( i = 0 ; i < love.length ; i++) {
+        love[i].style.color = "white";
+      }
+      window.location = "./login.html";
+    }
+  }
 });
+
+// Hàm kiểm tra nút LogIn 
+function checkStatus() {
+  for (i = 0; i <isLogin.length ; i++) {
+    if (isLogin[i].status) {
+      loginBtn.value = "Log out";
+    }
+}}
+checkStatus();
+
+// Nút thanh toán 
+let payBtn =document.getElementById('pay-money');
+payBtn.addEventListener('click',function(){
+  for (i = 0; i <isLogin.length ; i++) {
+    if (isLogin[i].status){
+      window.location = "./payment.html";
+    } else {
+      alert('Bạn cần đăng nhập để thanh toán.')
+    }
+}})

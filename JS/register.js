@@ -113,16 +113,17 @@ function registerConfirm(){
 // Hàm thêm thành viên
 let MemberList = [];
 class Member {
-  constructor(username, password) {
+  constructor(username, password, status) {
     this.username = username;
     this.password = password;
+    this.status = status;
   }
 }
 function newMember(){
   let x = document.getElementById('login__username')
   let y = document.getElementById('login__password')
   if (x.value != "" && y.value!= "" && keyPassConfirm == true){
-    let a = new Member(x.value, y.value);
+    let a = new Member(x.value, y.value,false);
     MemberList.push(a);
     console.log(MemberList);
     localStorage.setItem("Member",JSON.stringify(MemberList));
