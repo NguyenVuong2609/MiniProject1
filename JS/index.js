@@ -60,6 +60,7 @@ function showProduct(){
   let div = document.createElement('div');
   let span = document.createElement('span');
   let list = document.getElementById('show-cart')
+  let total = document.getElementById('totalCart');
   
   list.appendChild(div)
   div.appendChild(img);
@@ -67,6 +68,7 @@ function showProduct(){
   img.width = 100;
   div.appendChild(span);
   span.innerHTML = y[y.length-1].name + ' ' + y[y.length-1].price;
+  total.innerHTML = "Tổng sản phẩm trong giỏ hàng là: " + y.length;
   alert("Thêm sản phẩm vào rỏ hàng thành công.")
 }
 
@@ -87,3 +89,9 @@ for (i = 0; i < love.length; i++) {
     this.style.color = (this.style.color == "white" ) ? "#ff8380" : "white";
   })
 }
+
+// Nút đăng nhập từ Trang Chủ 
+let loginBtn = document.getElementById('login-button');
+loginBtn.addEventListener('click', function(){
+  window.location = "./login.html";
+});

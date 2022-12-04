@@ -91,7 +91,7 @@ i {
     transition: 0.3s;
     outline: none;
 }
-.avatar input:focus {
+#search:focus {
     width: 150px;
     border-bottom: 2px solid #2c3338;
 }
@@ -101,6 +101,19 @@ i {
 .avatar button:hover {
     cursor: pointer;
 }
+#login-button {
+    color: #ff8380;
+    cursor: pointer;
+    display: block;
+    border: 2px solid #ff8380;
+    border-radius: 8px;
+    transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+}
+#login-button:hover {
+    color: #000 !important;
+    background-color: transparent;
+    transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+  }
 
 /* Menu Trái  */
 #shop span {
@@ -267,7 +280,7 @@ i {
     position: absolute;
     color: white;
     background-color: #ff8380;
-    width: 15%;
+    width: 20%;
     z-index: 10;
     top: 250;
     right: 0;
