@@ -107,13 +107,14 @@ i {
     display: block;
     border: 2px solid #ff8380;
     border-radius: 8px;
+    margin-left: 5px;
     transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
 }
 #login-button:hover {
     color: #000 !important;
     background-color: transparent;
     transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
-  }
+}
 
 /* Menu Trái  */
 #shop span {
@@ -285,7 +286,6 @@ i {
     top: 250;
     right: 0;
     align-items: center;
-    /* text-align:right; */
 }
 #close-cart {
     padding: 5px;

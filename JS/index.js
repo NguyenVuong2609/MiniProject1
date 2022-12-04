@@ -61,6 +61,7 @@ function showProduct(){
   let span = document.createElement('span');
   let list = document.getElementById('show-cart')
   let total = document.getElementById('totalCart');
+  let small = document.getElementById('small');
   
   list.appendChild(div)
   div.appendChild(img);
@@ -69,14 +70,19 @@ function showProduct(){
   div.appendChild(span);
   span.innerHTML = y[y.length-1].name + ' ' + y[y.length-1].price;
   total.innerHTML = "Tổng sản phẩm trong giỏ hàng là: " + y.length;
+  small.innerHTML = y.length;
   alert("Thêm sản phẩm vào rỏ hàng thành công.")
 }
 
 // Xóa toàn bộ giỏ hàng 
 closeCart.addEventListener("click", function () {
-  let list = document.getElementById('show-cart')
-  console.log(list);
-  list.innerHTML = "";
+  let listCart = document.getElementById('show-cart')
+  let total = document.getElementById('totalCart');
+  let small = document.getElementById('small');
+  listCart.innerHTML = "";
+  total.innerHTML = "";
+  small.innerHTML = "";
+  list = [];
 });
 
 // Nút yêu thích sản phẩm
