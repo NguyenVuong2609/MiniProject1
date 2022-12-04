@@ -132,10 +132,15 @@ checkStatus();
 // Nút thanh toán 
 let payBtn =document.getElementById('pay-money');
 payBtn.addEventListener('click',function(){
+  let listCart = document.getElementById('show-cart')
   for (i = 0; i <isLogin.length ; i++) {
     if (isLogin[i].status){
-      window.location = "./payment.html";
+      if ( listCart.innerHTML != ""){
+        window.location = "./payment.html";
+      } else {
+        alert('Giỏ hàng đang trống.')
+      }
     } else {
-      alert('Bạn cần đăng nhập để thanh toán.')
+      alert('Bạn cần đăng nhập để thanh toán.');
     }
 }})
