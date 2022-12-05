@@ -1,4 +1,4 @@
-// Slide
+// * Slide
 let slideIndex = 0;
 var MemberStatus = localStorage.getItem('isLogin');
 let isLogin = JSON.parse(MemberStatus);
@@ -24,11 +24,11 @@ function showSlides() {
   setTimeout(showSlides, 4000); // Change image every 3 seconds
 }
 
-// Lấy dữ liệu từ localStorage
+// *Lấy dữ liệu từ localStorage
 let x = localStorage.getItem("Member");
 let arr = JSON.parse(x);
 
-// Thêm vào giỏ hàng
+// * Thêm vào giỏ hàng
 const addBtn = document.querySelectorAll(".add-cart");
 let list = [];
 
@@ -45,7 +45,7 @@ for (i = 0; i < addBtn.length; i++) {
   });
 }
 
-// Hiện giỏ hàng
+// *Hiện giỏ hàng
 let cartBtn = document.getElementById("cart-button");
 let closeCart = document.getElementById("close-cart");
 let result = document.getElementById("cart-menu");
@@ -55,7 +55,7 @@ cartBtn.addEventListener("click", function () {
 });
 
 
-// Hiện nội dung trong giỏ hàng 
+// *Hiện nội dung trong giỏ hàng 
 function showProduct(){
   let x = localStorage.getItem('cart')
   let y = JSON.parse(x);
@@ -77,7 +77,7 @@ function showProduct(){
   alert("Thêm sản phẩm vào giỏ hàng thành công.")
 }
 
-// Xóa toàn bộ giỏ hàng 
+// ! Xóa toàn bộ giỏ hàng 
 closeCart.addEventListener("click", function () {
   let listCart = document.getElementById('show-cart')
   let total = document.getElementById('totalCart');
@@ -88,7 +88,7 @@ closeCart.addEventListener("click", function () {
   list = [];
 });
 
-// Nút yêu thích sản phẩm
+//! Nút yêu thích sản phẩm
 const love = document.querySelectorAll('.love');
 for (i = 0; i < love.length; i++) {
   love[i].addEventListener("click", function () {
@@ -103,7 +103,7 @@ for (i = 0; i < love.length; i++) {
     
 
 
-// Nút đăng nhập từ Trang Chủ 
+//! Nút đăng nhập từ Trang Chủ 
 
 loginBtn.addEventListener('click', function(){
   // if (loginBtn.value = 'Log In'){
@@ -115,6 +115,7 @@ loginBtn.addEventListener('click', function(){
         isLogin[i].status = false;
         localStorage.setItem("isLogin", JSON.stringify(isLogin));
         loginBtn.value = "Log in";
+        break;
       } else {
         for ( i = 0 ; i < love.length ; i++) {
           love[i].style.color = "white";
@@ -128,7 +129,7 @@ loginBtn.addEventListener('click', function(){
   }
 );
 
-// Hàm kiểm tra nút LogIn 
+// !Hàm kiểm tra nút LogIn 
 function checkStatus() {
   if (isLogin != null){
   for (i = 0; i <isLogin.length ; i++) {
@@ -138,7 +139,7 @@ function checkStatus() {
 }}
 checkStatus();
 
-// Nút thanh toán 
+// ! Nút thanh toán 
 let payBtn =document.getElementById('pay-money');
 if (isLogin != null) {
   payBtn.addEventListener('click',function(){
@@ -155,5 +156,6 @@ if (isLogin != null) {
       }
   }})
 }
+
 
 
