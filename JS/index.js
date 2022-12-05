@@ -74,7 +74,7 @@ function showProduct(){
   span.innerHTML = y[y.length-1].name + ' ' + y[y.length-1].price + '$';
   total.innerHTML = "Tổng sản phẩm trong giỏ hàng là: " + y.length;
   small.innerHTML = y.length;
-  alert("Thêm sản phẩm vào rỏ hàng thành công.")
+  alert("Thêm sản phẩm vào giỏ hàng thành công.")
 }
 
 // Xóa toàn bộ giỏ hàng 
@@ -106,9 +106,10 @@ for (i = 0; i < love.length; i++) {
 // Nút đăng nhập từ Trang Chủ 
 
 loginBtn.addEventListener('click', function(){
-  if (loginBtn.value == 'Log In'){
-    window.location = "./login.html";
-  } else {
+  // if (loginBtn.value = 'Log In'){
+  //   window.location = "./login.html";
+  // } 
+  if (isLogin != null){
     for (i = 0; i <isLogin.length ; i++) {
       if (isLogin[i].status) {
         isLogin[i].status = false;
@@ -121,15 +122,19 @@ loginBtn.addEventListener('click', function(){
         window.location = "./login.html";
       }
     }
+    } else {
+      window.location = "./login.html";
+    }
   }
-});
+);
 
 // Hàm kiểm tra nút LogIn 
 function checkStatus() {
+  if (isLogin != null){
   for (i = 0; i <isLogin.length ; i++) {
     if (isLogin[i].status) {
       loginBtn.value = "Log out";
-    }
+    }}
 }}
 checkStatus();
 
