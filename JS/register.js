@@ -111,7 +111,7 @@ function registerConfirm(){
 }
 
 // Hàm thêm thành viên
-let MemberList = [];
+let getMember = localStorage.getItem("Member")
 class Member {
   constructor(username, password, status) {
     this.username = username;
@@ -123,15 +123,39 @@ function newMember(){
   let x = document.getElementById('login__username')
   let y = document.getElementById('login__password')
   if (x.value != "" && y.value!= "" && keyPassConfirm == true){
-    let a = new Member(x.value, y.value,false);
-    MemberList.push(a);
-    console.log(MemberList);
-    localStorage.setItem("Member",JSON.stringify(MemberList));
-    alert("Đăng ký thành công.");
-    window.location = './login.html';
+    if (getMember == null){
+      let MemberList = [];
+      let a = new Member(x.value, y.value,false);
+      MemberList.push(a);
+      console.log(MemberList);
+      localStorage.setItem("Member",JSON.stringify(MemberList));
+      alert("Đăng ký thành công.");
+      window.location = './login.html';
+    } else {
+      MemberList = JSON.parse(getMember);
+      let keyAcc = true;
+      for (i = 0 ; i < MemberList.length ; i++) {
+        if (MemberList[i].username == x.value){
+          keyAcc = false;
+          break;
+        }
+      }
+      if (keyAcc) {
+          a = new Member(x.value, y.value,false);
+          MemberList.push(a);
+          console.log(MemberList);
+          localStorage.setItem("Member",JSON.stringify(MemberList));
+          alert("Đăng ký thành công.");
+          window.location = './login.html';
+      } else {
+          document.getElementById('checkAccount').innerHTML = "Tài khoản đã tồn tại."
+      }
+    } 
   }
   return;
 }
+
+// Lấy lại dữ liệu 
 
 
 checkID();

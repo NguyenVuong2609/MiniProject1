@@ -32,7 +32,6 @@ function check(){
           document.getElementById('signIn').onsubmit = function(e){
             e.preventDefault();
           }
-          // isLogin = true;
           arr[i].status = true;
           console.log(arr);
           localStorage.setItem('isLogin', JSON.stringify(arr));
