@@ -106,16 +106,20 @@ for (i = 0; i < love.length; i++) {
 // Nút đăng nhập từ Trang Chủ 
 
 loginBtn.addEventListener('click', function(){
-  for (i = 0; i <isLogin.length ; i++) {
-    if (isLogin[i].status) {
-      isLogin[i].status = false;
-      localStorage.setItem("isLogin", JSON.stringify(isLogin));
-      loginBtn.value = "Log in";
-    } else {
-      for ( i = 0 ; i < love.length ; i++) {
-        love[i].style.color = "white";
+  if (loginBtn.value == 'Log In'){
+    window.location = "./login.html";
+  } else {
+    for (i = 0; i <isLogin.length ; i++) {
+      if (isLogin[i].status) {
+        isLogin[i].status = false;
+        localStorage.setItem("isLogin", JSON.stringify(isLogin));
+        loginBtn.value = "Log in";
+      } else {
+        for ( i = 0 ; i < love.length ; i++) {
+          love[i].style.color = "white";
+        }
+        window.location = "./login.html";
       }
-      window.location = "./login.html";
     }
   }
 });
