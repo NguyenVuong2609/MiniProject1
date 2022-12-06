@@ -16,6 +16,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200&family=Roboto:ital,wght@0,400;1,100&family=Shalimar&family=Ubuntu+Condensed&display=swap"
       rel="stylesheet"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   </head>
   <body>
     <!-- Thanh header  -->
@@ -50,14 +51,19 @@
                 </a>
               </li>
               <li>
-                <input type="button" value="Log in" id="login-button">
+                <input
+                  type="button"
+                  value="Log in"
+                  id="login-button"
+                  class="custom-btn"
+                />
               </li>
               <li>
                 <div id="cart-menu">
                   <div id="show-cart"></div>
                   <div id="totalCart"></div>
                   <input type="button" value="Delete Cart" id="close-cart" />
-                  <input type="button" value="Pay Money" id="pay-money">
+                  <input type="button" value="Pay Money" id="pay-money" />
                 </div>
               </li>
             </ul>
@@ -145,7 +151,7 @@
         <div class="product col-4">
           <div class="img-product">
             <img src="/IMG/sp5.jpg" alt="" />
-        </div>
+          </div>
           <div class="info-product"><a href="">CT-005</a></div>
           <div class="price-product">40000<small>$</small></div>
           <i class="fa-solid fa-cart-shopping add-cart"></i
@@ -161,6 +167,17 @@
           ><i class="fas fa-heart love"></i>
         </div>
       </div>
+      <br />
+
+      <!--! Khuyến mại  -->
+      <div class="col-12 discount">
+        <p id="showDiscount">Voucher đã hết. Chúc bạn may mắn lần sau!</p>
+        <div>
+          <label for="" id="colorChange">Click here to get Discount</label>
+          <i class="fa-solid fa-gift" style="color: white" id="getDiscount"></i>
+        </div>
+      </div>
+      <br />
 
       <!-- Phần cuối  -->
       <div class="footer col-12">
@@ -207,5 +224,18 @@
       </div>
     </div>
   </body>
+  <script>
+    $(document).ready(function () {
+      $("#getDiscount").click(function () {
+        let p = $("#showDiscount");
+        p.fadeIn(3000);
+        p.animate({fontSize: '20px', left: '250px'}, "slow")
+        p.animate({left: '500px'}, "slow")
+        p.animate({fontSize: '40px'}, "slow")
+        p.animate({left: '250px'}, "slow")
+        p.fadeOut(5000);
+      });
+    });
+  </script>
   <script src="/JS/index.js"></script>
 </html>

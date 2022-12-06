@@ -1,8 +1,8 @@
 // * Slide
 let slideIndex = 0;
-var MemberStatus = localStorage.getItem('isLogin');
+var MemberStatus = localStorage.getItem("isLogin");
 let isLogin = JSON.parse(MemberStatus);
-let loginBtn = document.getElementById('login-button');
+let loginBtn = document.getElementById("login-button");
 showSlides();
 
 function showSlides() {
@@ -34,7 +34,7 @@ let list = [];
 
 for (i = 0; i < addBtn.length; i++) {
   addBtn[i].addEventListener("click", function () {
-    console.log(this.parentNode.childNodes[1].childNodes[1].src);
+    console.log(this);
     list.push({
       name: this.parentNode.childNodes[3].childNodes[0].innerText,
       price: this.parentNode.childNodes[5].childNodes[0].textContent,
@@ -51,37 +51,38 @@ let closeCart = document.getElementById("close-cart");
 let result = document.getElementById("cart-menu");
 cartBtn.addEventListener("click", function () {
   console.log(result.style.visibility);
-  result.style.visibility = (result.style.visibility == "hidden" ) ? "visible" : "hidden";
+  result.style.visibility =
+    result.style.visibility == "hidden" ? "visible" : "hidden";
 });
 
-
-// *Hiện nội dung trong giỏ hàng 
-function showProduct(){
-  let x = localStorage.getItem('cart')
+// *Hiện nội dung trong giỏ hàng
+function showProduct() {
+  let x = localStorage.getItem("cart");
   let y = JSON.parse(x);
-  let img = document.createElement('img');
-  let div = document.createElement('div');
-  let span = document.createElement('span');
-  let list = document.getElementById('show-cart')
-  let total = document.getElementById('totalCart');
-  let small = document.getElementById('small');
-  
-  list.appendChild(div)
+  let img = document.createElement("img");
+  let div = document.createElement("div");
+  let span = document.createElement("span");
+  let list = document.getElementById("show-cart");
+  let total = document.getElementById("totalCart");
+  let small = document.getElementById("small");
+  let flag = false;
+
+  list.appendChild(div);
   div.appendChild(img);
-  img.src = y[y.length-1].img;
+  img.src = y[y.length - 1].img;
   img.width = 100;
   div.appendChild(span);
-  span.innerHTML = y[y.length-1].name + ' ' + y[y.length-1].price + '$';
+  span.innerHTML = y[y.length - 1].name + " " + y[y.length - 1].price + "$";
   total.innerHTML = "Tổng sản phẩm trong giỏ hàng là: " + y.length;
   small.innerHTML = y.length;
-  alert("Thêm sản phẩm vào giỏ hàng thành công.")
+  alert("Thêm sản phẩm vào giỏ hàng thành công.");
 }
 
-// ! Xóa toàn bộ giỏ hàng 
+// ! Xóa toàn bộ giỏ hàng
 closeCart.addEventListener("click", function () {
-  let listCart = document.getElementById('show-cart')
-  let total = document.getElementById('totalCart');
-  let small = document.getElementById('small');
+  let listCart = document.getElementById("show-cart");
+  let total = document.getElementById("totalCart");
+  let small = document.getElementById("small");
   listCart.innerHTML = "";
   total.innerHTML = "";
   small.innerHTML = "";
@@ -89,73 +90,86 @@ closeCart.addEventListener("click", function () {
 });
 
 //! Nút yêu thích sản phẩm
-const love = document.querySelectorAll('.love');
+const love = document.querySelectorAll(".love");
 for (i = 0; i < love.length; i++) {
   love[i].addEventListener("click", function () {
-    for (i = 0; i <isLogin.length ; i++){
+    for (i = 0; i < isLogin.length; i++) {
       if (isLogin[i].status) {
-        this.style.color = (this.style.color == "white" ) ? "#ff8380" : "white";
+        this.style.color = this.style.color == "white" ? "#ff8380" : "white";
       } else {
-        alert('Vui lòng đăng nhập để yêu thích sản phẩm.')
+        alert("Vui lòng đăng nhập để yêu thích sản phẩm.");
       }
     }
-  })}
-    
+  });
+}
 
+//! Nút đăng nhập từ Trang Chủ
 
-//! Nút đăng nhập từ Trang Chủ 
-
-loginBtn.addEventListener('click', function(){
+loginBtn.addEventListener("click", function () {
   // if (loginBtn.value = 'Log In'){
   //   window.location = "./login.html";
-  // } 
-  if (isLogin != null){
-    for (i = 0; i <isLogin.length ; i++) {
+  // }
+  if (isLogin != null) {
+    for (i = 0; i < isLogin.length; i++) {
       if (isLogin[i].status) {
         isLogin[i].status = false;
         localStorage.setItem("isLogin", JSON.stringify(isLogin));
         loginBtn.value = "Log in";
         break;
       } else {
-        for ( i = 0 ; i < love.length ; i++) {
+        for (i = 0; i < love.length; i++) {
           love[i].style.color = "white";
         }
         window.location = "./login.html";
       }
     }
-    } else {
-      window.location = "./login.html";
+  } else {
+    window.location = "./login.html";
+  }
+});
+
+// !Hàm kiểm tra nút LogIn
+function checkStatus() {
+  if (isLogin != null) {
+    for (i = 0; i < isLogin.length; i++) {
+      if (isLogin[i].status) {
+        loginBtn.value = "Log out";
+      }
     }
   }
-);
-
-// !Hàm kiểm tra nút LogIn 
-function checkStatus() {
-  if (isLogin != null){
-  for (i = 0; i <isLogin.length ; i++) {
-    if (isLogin[i].status) {
-      loginBtn.value = "Log out";
-    }}
-}}
+}
 checkStatus();
 
-// ! Nút thanh toán 
-let payBtn =document.getElementById('pay-money');
+// ! Nút thanh toán
+let payBtn = document.getElementById("pay-money");
 if (isLogin != null) {
-  payBtn.addEventListener('click',function(){
-    let listCart = document.getElementById('show-cart')
-    for (i = 0; i <isLogin.length ; i++) {
-      if (isLogin[i].status){
-        if ( listCart.innerHTML != ""){
+  payBtn.addEventListener("click", function () {
+    let listCart = document.getElementById("show-cart");
+    for (i = 0; i < isLogin.length; i++) {
+      if (isLogin[i].status) {
+        if (listCart.innerHTML != "") {
           window.location = "./payment.html";
         } else {
-          alert('Giỏ hàng đang trống.')
+          alert("Giỏ hàng đang trống.");
         }
       } else {
-        alert('Bạn cần đăng nhập để thanh toán.');
+        alert("Bạn cần đăng nhập để thanh toán.");
       }
-  }})
+    }
+  });
 }
 
-
-
+//! Chữ đổi màu
+let targetLabel = document.getElementById('colorChange')
+let arrayColor = ["#ff80ed","#065535","#133337","#ffc0cb","#ff0000","#ffd700","#b0e0e6","#ffa500","#00ff00","#800000"]
+console.log(targetLabel.style.color);
+let z = 0;
+function changeColorText () {
+  if (z < arrayColor.length) {
+    targetLabel.style.color = arrayColor[z]
+    z++;
+  } else {
+    z = 0;
+  }
+}
+setInterval(changeColorText,3000);
